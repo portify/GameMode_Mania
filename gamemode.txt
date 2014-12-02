@@ -1,0 +1,112 @@
+// Add-Ons
+ADDON Emote_Alarm
+ADDON Emote_Confusion
+ADDON Emote_Hate
+ADDON Emote_Love
+ADDON Item_Skis
+ADDON Light_Animated
+ADDON Light_Basic
+ADDON Particle_Basic
+ADDON Particle_FX_Cans
+ADDON Particle_Grass
+ADDON Particle_Player
+ADDON Particle_Tools
+ADDON Projectile_GravityRocket
+ADDON Projectile_Pinball
+ADDON Projectile_Pong
+ADDON Projectile_Radio_Wave
+ADDON Sound_Synth4
+ADDON Sound_Beeps
+ADDON Sound_Phone
+ADDON Vehicle_Ball
+ADDON Vehicle_Flying_Wheeled_Jeep
+ADDON Vehicle_Horse
+ADDON Vehicle_Jeep
+ADDON Vehicle_Magic_Carpet
+ADDON Vehicle_Tank
+ADDON Weapon_Bow
+ADDON Weapon_Gun
+ADDON Weapon_Guns_Akimbo
+ADDON Weapon_Horse_Ray
+ADDON Weapon_Push_Broom
+ADDON Weapon_Rocket_Launcher
+ADDON Weapon_Spear
+ADDON Weapon_Sword
+ADDON Player_No_Jet
+ADDON Print_1x2f_Default
+ADDON Print_2x2f_Default
+ADDON Print_2x2r_Default
+ADDON Print_Letters_Default
+ADDON Print_2x2r_Monitor3 
+ADDON Print_1x2f_BLPRemote
+ADDON Vehicle_Pirate_Cannon
+ADDON Vehicle_Rowboat
+ADDON Item_Key
+ADDON Item_Sports
+ADDON Bot_Hole
+ADDON Bot_Blockhead
+ADDON Bot_Horse
+ADDON Bot_Shark
+ADDON Bot_Zombie
+
+// Add-Ons: Bricks
+ADDON Support_Doors
+ADDON Brick_1RandomPack
+ADDON Brick_AltPine
+ADDON Brick_Arch
+ADDON Brick_DemiansBB
+ADDON Brick_DemiansBB2
+ADDON Brick_DemiansBB3
+ADDON Brick_Doors_Frameless
+ADDON Brick_Fence
+ADDON Brick_GlassPanes
+ADDON Brick_Halloween
+ADDON Brick_HorizPoles
+ADDON Brick_Large_Cubes
+ADDON Brick_ModTer_4xPack
+ADDON Brick_ModTer_BasicPack
+ADDON Brick_ModTer_InvertedPack
+ADDON Brick_Plant
+ADDON Brick_PoleAdapters
+//ADDON Brick_Tiles_Better
+ADDON Brick_V15
+ADDON Brick_VerticalPlatePack
+ADDON Brick_Wedge
+
+// Add-Ons: Game-Mode
+ADDON GameMode_Mania
+
+// Environment
+$EnvGuiServer::SimpleMode 1
+$EnvGuiServer::SkyFile Add-Ons/Sky_Skylands/Skylands.dml
+$EnvGuiServer::WaterFile None
+$EnvGuiServer::GroundFile Add-Ons/Ground_Plate/plate.ground
+
+// Mini-Game
+$MiniGame::Enabled 1
+$MiniGame::GameColor 0
+$MiniGame::InviteOnly 0
+$MiniGame::IncludeAllPlayersBricks 1
+$MiniGame::PlayersUseOwnBricks 0
+
+$MiniGame::Points_BreakBrick 0
+$MiniGame::Points_PlantBrick 0
+$MiniGame::Points_KillPlayer 0
+$MiniGame::Points_KillSelf 0
+$MiniGame::Points_Die 0
+
+$MiniGame::RespawnTime -1
+$MiniGame::VehicleRespawnTime 5
+$MiniGame::BrickRespawnTime 360
+
+$MiniGame::UseSpawnBricks 1
+$MiniGame::FallingDamage 1
+$MiniGame::WeaponDamage 1
+$MiniGame::SelfDamage 1
+$MiniGame::VehicleDamage 1
+$MiniGame::BrickDamage 0
+$MiniGame::EnableWand 0
+$MiniGame::EnableBuilding 0
+$MiniGame::EnablePainting 0
+
+$MiniGame::PlayerDataBlockName No-Jet Player
