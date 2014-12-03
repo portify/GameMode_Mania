@@ -31,7 +31,7 @@ function MicroGame_SimonSays::onStart(%this, %obj, %game)
 	%text = (%obj.who ? "SIMON" : "SOMEONE") SPC "SAYS:" SPC strUpr(%obj.action) @ "!";
 
 	%game.displayText("<color:FFFFAA>" @ %text, 3);
-	%game.miniGame.play2D(ManiaHoedownMusic);
+	%game.miniGame.play2D(ManiaFunkyMusic);
  
 	for (%i = 0; %i < %game.miniGame.numMembers; %i++)
 	{

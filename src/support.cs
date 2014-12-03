@@ -40,13 +40,13 @@ function MiniGameSO::setMusic(%this, %profile)
 	{
 		position = "0 0 0";
 		profile = %profile;
-		useProfileDescription = "0";
-		description = "ManiaLoopingMusicDescription";
-		type = "0";
-		volume = "2";
-		outsideAmbient = "1";
-		ReferenceDistance = "9001";
-		maxDistance = "9001";
-		isLooping = "1";
+		useProfileDescription = 0;
+		description = ManiaLoopingMusicDescription;
+		type = 0;
+		volume = 2;
+		outsideAmbient = 1;
+		ReferenceDistance = 1;
+		maxDistance = 9001;
+		isLooping = 1;
 	};
 }

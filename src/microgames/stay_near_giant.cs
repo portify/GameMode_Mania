@@ -10,14 +10,15 @@ datablock PlayerData(PlayerGiantArmor : PlayerStandardArmor)
 {
 	uiName = "";
 
-	maxForwardSpeed = PlayerStandardArmor.maxForwardSpeed * 0.8;
-	maxBackwardSpeed = PlayerStandardArmor.maxBackwardSpeed * 0.8;
-	maxSideSpeed = PlayerStandardArmor.maxSideSpeed * 0.8;
-	maxForwardCrouchSpeed = PlayerStandardArmor.maxForwardCrouchSpeed * 0.8;
-	maxSideCrouchSpeed = PlayerStandardArmor.maxSideCrouchSpeed * 0.8;
-	maxBackwardCrouchSpeed = PlayerStandardArmor.maxBackwardCrouchSpeed * 0.8;
-	jumpForce = PlayerStandardArmor.jumpForce * 0.8;
-	mass = 90;
+	maxForwardSpeed = PlayerStandardArmor.maxForwardSpeed * 0.5;
+	maxBackwardSpeed = PlayerStandardArmor.maxBackwardSpeed * 0.5;
+	maxSideSpeed = PlayerStandardArmor.maxSideSpeed * 0.5;
+	maxForwardCrouchSpeed = PlayerStandardArmor.maxForwardCrouchSpeed * 0.5;
+	maxSideCrouchSpeed = PlayerStandardArmor.maxSideCrouchSpeed * 0.5;
+	maxBackwardCrouchSpeed = PlayerStandardArmor.maxBackwardCrouchSpeed * 0.5;
+	jumpForce = PlayerStandardArmor.jumpForce * 1;
+	mass = 180;
+	canJet = false;
 };
 
 function MicroGame_StayNearGiant::onStart(%this, %obj, %game)
@@ -91,5 +92,5 @@ function MicroGame_StayNearGiant::onEnd(%this, %obj, %game)
 	}
 
     if (isObject(%obj.giant))
-        %obj.giant.client.setManiaWin(%near < mFloor(%game.miniGame.numMembers / 2));
+        %obj.giant.client.setManiaWin(%near < mFloor(%game.miniGame.numMembers / 3));
 }

@@ -43,6 +43,11 @@ function MicroGame_Math::onStart(%this, %obj, %game)
 	%game.endMicroGame = %game.schedule(4000, endMicroGame);
 }
 
+function MicroGame_Math::onEnd(%this, %obj, %game)
+{
+	%game.miniGame.chatmsgAll("<color:AAAAFF>The correct answer was:" SPC %obj.result);
+}
+
 function MicroGame_Math::onChat(%this, %obj, %game, %client, %text)
 {
 	if (%text !$= mFloor(%text) || %client.maniaWinStatus !$= "")

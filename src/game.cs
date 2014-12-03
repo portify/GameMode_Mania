@@ -56,7 +56,7 @@ function ManiaGame::doIntro(%this, %index)
 	%text0 = "Welcome to Mania";
 	%text1 = "Follow the on-screen instructions to win";
 	%text2 = "The game will become gradually faster";
-	%text3 = "Normal minigames give 2 points\n\c6Boss games give 5!";
+	%text3 = "Normal minigames give 1 points\n\c6Boss games give 4!";
 	%text4 = "After the boss game, the player with the most points wins!";
 
 	if (%index < 0 || %index > 4)
@@ -155,7 +155,7 @@ function ManiaGame::endMicroGame(%this)
 		%this.microGame.type.allowDeadWin
 	);
 
-	%score = %this.microGame.type.boss ? 5 : 2;
+	%score = %this.microGame.type.boss ? 4 : 1;
 
 	for (%i = 0; %i < %this.miniGame.numMembers; %i++)
 	{

@@ -1,0 +1,33 @@
+a few special rounds:
+  don't score = lowest score wins
+  no touching = touching other players kills both of you
+  fov experience = 135 fov for all
+  x2 boss battle
+  last is best = ?
+  super speed?
+
+microgames:
+  enter a door maybe (one door is deadly?)
+  avoid the bombs (fall from sky - maybe add deflector?)
+  reach the end:
+    short map with obstacles, people get in karts
+    run up a hill with deadly balls rolling down
+    ramp map that you boost up, people in karts, moving obstacles to fly past?
+  maybe some classics:
+    get on a platform
+    break a barrel
+    type the word/color (misleading color/word combination)
+    avoid the kamikaze?
+  hit the target (one vehicle flies in distance, gotta hit with a shot)
+  small arena with spikes everywhere + everyone has deflectors, survive
+  (boss) some adaptation of "avoid the cuddly heavy" would be awesome
+  (boss) rocket dodgeball
+  (boss) hexagon heat
+  goomba stomp a player (jump on their head)
+    how to do this in a good way?
+    everybody would be moving so itd be hard
+
+respawn everyone and give winner(s) weapon on end
+rename math microgame to "type the answer in chat"
+show a short top 3 + your own score in bottomprint
+make "hit an enemy" let you win if you died but hit somebody
