@@ -37,7 +37,7 @@ function MicroGame_Math::onStart(%this, %obj, %game)
 
 	%text = %obj.a SPC %obj.method SPC %obj.b SPC "= ?";
 
-	%game.miniGame.centerPrintAll("<font:palatino linotype:64><color:FFFFAA>" @ %text, 4);
+	%game.miniGame.centerPrintAll("<font:palatino linotype:64><color:FFFFAA>ANSWER IN CHAT:<br>" @ %text, 4);
 	%game.miniGame.play2D(ManiaWeirdMusic);
 
 	%game.endMicroGame = %game.schedule(4000, endMicroGame);

@@ -37,10 +37,9 @@ function MicroGame_SimonSays::onStart(%this, %obj, %game)
 	{
 		%client = %game.miniGame.member[%i];
  		%client.win = 0;
+
 		if (%client.isAlive() && %obj.action $= "jet")
-		{
 			%client.player.setDatablock(PlayerStandardArmor);
-		}
 	}
  
 	%game.endMicroGame = %game.schedule(4000, endMicroGame);
@@ -53,10 +52,7 @@ function MicroGame_SimonSays::onEnd(%this, %obj, %game)
 		%client = %game.miniGame.member[%i];
 
 		if (%client.isAlive())
-		{
 			%client.player.setDatablock(PlayerNoJet);
-		}
-		//if (%client.win) %client.setManiaWin(%microGame.who);
 	}
 }
 
@@ -66,20 +62,18 @@ function GameConnection::simonSaysAction(%this, %action)
 	%type = %microGame.type;
 
 	if (!isObject(%type) || %type != nameToID("MicroGame_SimonSays"))
-	{
 		return;
-	}
 
 	if (!%this.isAlive() || %this.maniaWinState !$= "")
-	{
 		return;
-	}
 
 	if (%action $= %microGame.action)
-	{
-		//%this.win;//%this.setManiaWin(%microGame.who);
+    {
         %this.setManiaWin(%microGame.who);
-	}
+
+        if (!%microGame.who)
+            %this.winHint = "(Simon didn't say it!)";
+    }
 }
 
 package MicroGame_SimonSays
@@ -89,16 +83,14 @@ package MicroGame_SimonSays
 		Parent::onTrigger(%this, %obj, %slot, %value);
 
 		if (!isObject(%obj.client))
-		{
 			return;
-		}
 
 		switch (%slot)
 		{
 			case 0: %obj.client.simonSaysAction("click");
-			case 1: %obj.client.simonSaysAction("jet");
 			case 2: %obj.client.simonSaysAction("jump");
 			case 3: %obj.client.simonSaysAction("crouch");
+			case 4: %obj.client.simonSaysAction("jet");
 		}
 	}
 

@@ -32,6 +32,8 @@ function ManiaGame::onRemove(%this)
 function ManiaGame::end(%this)
 {
 	%this.setSpeedUp(0);
+    %this.miniGame.respawnDeadPlayers();
+
 	%winner = %this.getLeader();
 
 	if (isObject(%winner))
@@ -47,6 +49,19 @@ function ManiaGame::end(%this)
 
 	%this.miniGame.play2D(ManiaGameEndMusic);
 	%this.miniGame.scheduleReset();
+
+    %choice = getRandom(0, 3);
+
+	switch (%choice)
+	{
+		case 0: %image = BowImage;
+		case 1: %image = GunImage;
+		case 2: %image = SpearImage;
+		case 3: %image = SwordImage;
+	}
+
+    %winner.player.mountImage(%image, 0);
+    fixArmReady(%client.player);
 }
 
 function ManiaGame::doIntro(%this, %index)
@@ -74,23 +89,15 @@ function ManiaGame::startMicroGame(%this)
 	cancel(%this.startMicroGame);
 
 	if (!isObject(ManiaMicroGameGroup) || isObject(%this.microGame))
-	{
 		return;
-	}
 
 	if (%this.microGameCount > 15)
 	{
 		%this.end();
 		return;
 	}
-	else if (%this.microGameCount == 15)
-	{
-		%boss = 1;
-	}
 	else
-	{
-		%boss = 0;
-	}
+        %boss = %this.microGameCount == 15; 
 
 	%speedUp = mFloor(%this.microGameCount / 3);
 
@@ -108,9 +115,7 @@ function ManiaGame::startMicroGame(%this)
 	%type = ManiaMicroGameGroup.getMicroGame(%boss);
 
 	if (!isObject(%type))
-	{
 		return;
-	}
 
 	%this.microGame = new ScriptObject()
 	{
@@ -119,6 +124,9 @@ function ManiaGame::startMicroGame(%this)
 		game = %this;
 		type = %type;
 	};
+
+    for (%i = 0; %i < %this.miniGame.numMembers; %i++)
+        %this.miniGame.member[%i].winHint = "";
 
 	if(%boss)
 	{
@@ -174,6 +182,9 @@ function ManiaGame::endMicroGame(%this)
 			%message = "<color:FFAAAA>YOU LOSE!";
 		}
 
+        if (%client.winHint !$= "")
+            %message = %message @ "\n<font:arial:24>\c6" @ %client.winHint;
+
 		%client.centerPrint("<font:arial bold:40>" @ %message, 2);
 	}
 
@@ -192,9 +203,7 @@ function ManiaGame::endMicroGame(%this)
 function ManiaGame::displayText(%this, %text, %time)
 {
 	if (%time $= "")
-	{
 		%time = 4;
-	}
 
 	%this.miniGame.centerPrintAll("<font:arial bold:40>" @ %text, %time);
 }
@@ -258,27 +267,17 @@ function Player::checkManiaHeight(%this)
 	cancel(%this.checkManiaHeight);
 
 	if (%this.getState() $= "Dead" || !isObject(%this.client.miniGame.maniaGame))
-	{
 		return;
-	}
 
 	if (%this.client.miniGame.maniaGame.arena $= "airblast")
-	{
 		%floor = 30;
-	}
 	else
-	{
 		%floor = 10;
-	}
 
 	if (getWord(%this.position, 2) < %floor)
-	{
 		%this.kill();
-	}
 	else
-	{
 		%this.checkManiaHeight = %this.schedule(100, checkManiaHeight);
-	}
 }
 
 package ManiaGamePackage
