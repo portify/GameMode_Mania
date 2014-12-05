@@ -50,18 +50,9 @@ function ManiaGame::end(%this)
 	%this.miniGame.play2D(ManiaGameEndMusic);
 	%this.miniGame.scheduleReset();
 
-    %choice = getRandom(0, 3);
-
-	switch (%choice)
-	{
-		case 0: %image = BowImage;
-		case 1: %image = GunImage;
-		case 2: %image = SpearImage;
-		case 3: %image = SwordImage;
-	}
-
-    %winner.player.mountImage(%image, 0);
-    fixArmReady(%client.player);
+	%image = AkimboGunImage;
+	%winner.player.mountImage(%image, 0);
+	%winner.player.fixArmReady(%client.player);
 }
 
 function ManiaGame::doIntro(%this, %index)
@@ -91,15 +82,15 @@ function ManiaGame::startMicroGame(%this)
 	if (!isObject(ManiaMicroGameGroup) || isObject(%this.microGame))
 		return;
 
-	if (%this.microGameCount > 15)
+	if (%this.microGameCount > $MicrogameMania::MaxMicrogames)
 	{
 		%this.end();
 		return;
 	}
 	else
-        %boss = %this.microGameCount == 15; 
+        %boss = %this.microGameCount == $MicrogameMania::MaxMicrogames; 
 
-	%speedUp = mFloor(%this.microGameCount / 3);
+	%speedUp = mFloor(%this.microGameCount / 2);
 
 	if (%this.setSpeedUp(%speedUp))
 	{
@@ -145,6 +136,10 @@ function ManiaGame::startMicroGame(%this)
 		%this.miniGame.schedule(2000, respawnDeadPlayers);
 		%this.microGame.schedule(2000, call, "onStart");
 	}
+
+	%leader = %this.getLeader();
+	%text = "<color:FFFFAA>Microgame<color:AAAAFF>" SPC %this.microGameCount @ "<color:FFFFAA><br><color:FFFFAA>Lead:" SPC %leader.getPlayerName() SPC "<color:AAAAFF>(" @ %leader.score SPC "points)";
+	%this.miniGame.bottomPrintAll("<just:center>" @ %text @ "\n", 0, 1);
 }
 
 function ManiaGame::endMicroGame(%this)
@@ -190,14 +185,6 @@ function ManiaGame::endMicroGame(%this)
 
 	%this.microGame.delete();
 	%this.startMicroGame = %this.schedule(2000, startMicroGame);
-
-	%leader = %this.getLeader();
-
-	if (isObject(%leader))
-	{
-		%text = "<color:FFFFAA>" @ %leader.getPlayerName() SPC "<color:AAAAFF>is leading with" SPC %leader.score SPC "points";
-		%this.miniGame.bottomPrintAll("<just:center><font:arial bold:24>" @ %text, 0, 1);
-	}
 }
 
 function ManiaGame::displayText(%this, %text, %time)

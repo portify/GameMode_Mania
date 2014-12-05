@@ -20,5 +20,9 @@ exec("./src/microgames/stay_on_table.cs");
 exec("./src/microgames/hit_an_enemy.cs");
 exec("./src/microgames/stay_near_giant.cs");
 exec("./src/microgames/avoid_kamikaze.cs");
+exec("./src/microgames/break_barrel.cs");
 
 exec("./src/microgames/boss_obby.cs");
+
+$Game::PlayerInvulnerabilityTime = 0;
+$MicrogameMania::MaxMicrogames = 20;

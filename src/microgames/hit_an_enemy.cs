@@ -61,7 +61,7 @@ package MicroGame_HitAnEnemy
 			return Parent::damage(%this, %source, %pos, %damage, %damageType);
 		}
 
-		if (!%source.client.isAlive() || %source.client == %this.client)
+		if (%source.client == %this.client)//|| !%source.client.isAlive())
 		{
 			return Parent::damage(%this, %source, %pos, %damage, %damageType);
 		}

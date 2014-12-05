@@ -24,6 +24,7 @@ function MicroGame_ObbyBoss::onStart(%this, %obj, %game)
 {
 	%game.setArena("obby");
 	%game.miniGame.setMusic(ManiaBossChipMusic);
+	%game.endMicroGame = %game.schedule(60000, endMicroGame);
 	// for (%i = 0; %i < %game.miniGame.numMembers; %i++)
 	// {
 	// 	%client = %game.miniGame.member[%i];

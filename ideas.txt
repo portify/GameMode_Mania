@@ -15,17 +15,22 @@ microgames:
     ramp map that you boost up, people in karts, moving obstacles to fly past?
   maybe some classics:
     get on a platform
-    break a barrel
+    (x) break a barrel done
     type the word/color (misleading color/word combination)
-    avoid the kamikaze?
+    (x) avoid the kamikaze done
   hit the target (one vehicle flies in distance, gotta hit with a shot)
   small arena with spikes everywhere + everyone has deflectors, survive
   (boss) some adaptation of "avoid the cuddly heavy" would be awesome
   (boss) rocket dodgeball
   (boss) hexagon heat
+  (boss) paint wars:
+    players have to paint as much of arena as possible
+  (boss) western shootout:
+    players are put in pairs in front of each other, have to shoot on "GO!".
   goomba stomp a player (jump on their head)
     how to do this in a good way?
     everybody would be moving so itd be hard
+    perhaps higher jump height?
 
 respawn everyone and give winner(s) weapon on end
 rename math microgame to "type the answer in chat"

@@ -21,6 +21,7 @@ function ManiaMicroGameGroup::getMicroGame(%this, %boss)
 	}
 
 	%obj = %candidates.item[getRandom(0, %candidates.size - 1)];
+	// %obj = nameToID(microGame_BreakBarrel);
 	%candidates.delete();
 
 	if (isObject(%obj))

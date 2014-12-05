@@ -73,6 +73,9 @@ ADDON Brick_V15
 ADDON Brick_VerticalPlatePack
 ADDON Brick_Wedge
 
+// Add-Ons: The Rest
+ADDON Vehicle_Barrel
+
 // Add-Ons: Game-Mode
 ADDON GameMode_Mania
 

@@ -1,0 +1,93 @@
+if (!isObject(MicroGame_BreakBarrel))
+{
+	new ScriptObject(MicroGame_BreakBarrel)
+	{
+		class = ManiaMicroGame;
+	};
+}
+
+function MicroGame_BreakBarrel::onStart(%this, %obj, %game)
+{
+	%game.displayText("<color:FFFFAA>BREAK A BARREL!", 4);
+	%game.miniGame.play2D(ManiaPanicMusic);
+
+	%image = SwordImage;
+	for (%i = 0; %i < %game.miniGame.numMembers; %i++)
+	{
+		%client = %game.miniGame.member[%i];
+
+		if (%client.isAlive())
+		{
+			%client.player.mountImage(%image, 0);
+			fixArmReady(%client.player);
+		}
+	}
+
+	for (%i = 0; %i < mCeil(%game.miniGame.numMembers / 1.5); %i++)
+	{
+		%barrel = new WheeledVehicle()
+		{
+			dataBlock = barrelOldBreakVehicle;
+			position = vectorAdd(%game.miniGame.pickSpawnPoint(), "0 0 5");
+		};
+		if (!isObject(BarrelGroup))
+			MissionCleanup.add(new SimGroup(BarrelGroup));
+		barrelGroup.add(%barrel);
+		%barrel.setNodeColor("ALL", "0.4 0.3 0 1");
+	}
+
+	%game.endMicroGame = %game.schedule(4000, endMicroGame);
+}
+
+function MicroGame_BreakBarrel::onEnd(%this, %obj, %game)
+{
+	for (%i = 0; %i < %game.miniGame.numMembers; %i++)
+	{
+		%client = %game.miniGame.member[%i];
+
+		if (%client.isAlive())
+		{
+			%client.player.unMountImage(0);
+			fixArmReady(%client.player);
+		}
+	}
+	barrelGroup.deleteAll();
+}
+
+
+package MicroGame_BreakBarrel
+{
+	function Player::damage(%this, %source, %pos, %damage, %damagetype)
+	{
+		%microGame = %source.client.miniGame.maniaGame.microGame;
+		%type = %microGame.type;
+
+		if (!isObject(%type) || %type != nameToID("MicroGame_BreakBarrel"))
+		{
+			return Parent::damage(%this, %source, %pos, %damage, %damageType);
+		}
+
+		if (%source.client == %this.client)
+		{
+			return Parent::damage(%this, %source, %pos, %damage, %damageType);
+		}
+	}
+
+	function barrelOldBreakVehicle::damage(%this, %obj, %source, %pos, %damage, %damagetype)
+	{
+		%microGame = %source.client.miniGame.maniaGame.microGame;
+		%type = %microGame.type;
+		if (!isObject(%type) || %type != nameToID("MicroGame_BreakBarrel"))
+		{
+			return Parent::damage(%this, %obj, %source, %pos, %damage, %damageType);
+		}
+
+		if(isObject(%source.client) && %obj.getDamageLevel() + %damage >= %this.maxDamage)
+		{
+			%source.client.setManiaWin(1);
+		}
+		Parent::damage(%this, %obj, %source, %pos, %damage, %damageType);
+	}
+};
+
+activatePackage("MicroGame_BreakBarrel");

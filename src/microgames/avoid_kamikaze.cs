@@ -102,6 +102,10 @@ package MicroGame_AvoidKamikaze
 		{
 			return Parent::damage(%this, %source, %pos, %damage, %damageType);
 		}
+		if(%source.client == %this.client)
+		{
+			return Parent::damage(%this, %source, %pos, %damage, %damageType);
+		}
 		%source.client.setManiaWin(1);
 		Parent::damage(%this, %source, %pos, 100, %damageType);
 	}
