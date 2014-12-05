@@ -136,10 +136,6 @@ function ManiaGame::startMicroGame(%this)
 		%this.miniGame.schedule(2000, respawnDeadPlayers);
 		%this.microGame.schedule(2000, call, "onStart");
 	}
-
-	%leader = %this.getLeader();
-	%text = "<color:FFFFAA>Microgame<color:AAAAFF>" SPC %this.microGameCount @ "<color:FFFFAA><br><color:FFFFAA>Lead:" SPC %leader.getPlayerName() SPC "<color:AAAAFF>(" @ %leader.score SPC "points)";
-	%this.miniGame.bottomPrintAll("<just:center>" @ %text @ "\n", 0, 1);
 }
 
 function ManiaGame::endMicroGame(%this)
@@ -185,6 +181,9 @@ function ManiaGame::endMicroGame(%this)
 
 	%this.microGame.delete();
 	%this.startMicroGame = %this.schedule(2000, startMicroGame);
+	%leader = %this.getLeader();
+	%text = "<color:FFFFAA>Microgame<color:AAAAFF>" SPC %this.microGameCount @ "<color:FFFFAA><br><color:FFFFAA>Lead:" SPC %leader.getPlayerName() SPC "<color:AAAAFF>(" @ %leader.score SPC "points)";
+	%this.miniGame.bottomPrintAll("<just:center>" @ %text @ "\n", 0, 1);
 }
 
 function ManiaGame::displayText(%this, %text, %time)

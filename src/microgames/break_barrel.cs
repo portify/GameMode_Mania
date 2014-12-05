@@ -8,7 +8,9 @@ if (!isObject(MicroGame_BreakBarrel))
 
 function MicroGame_BreakBarrel::onStart(%this, %obj, %game)
 {
-	%game.displayText("<color:FFFFAA>BREAK A BARREL!", 4);
+	%obj.all = getRandom(0, 1);
+	%text = "<color:FFFFAA>BREAK" SPC (%obj.all ? "ALL THE BARRELS!" : "A BARREL!");
+	%game.displayText(%text, 4);
 	%game.miniGame.play2D(ManiaPanicMusic);
 
 	%image = SwordImage;
@@ -50,6 +52,11 @@ function MicroGame_BreakBarrel::onEnd(%this, %obj, %game)
 			%client.player.unMountImage(0);
 			fixArmReady(%client.player);
 		}
+
+		if(barrelGroup.getCount() <= 0 && %obj.all == 1)
+		{
+			%client.setManiaWin(1);
+		}
 	}
 	barrelGroup.deleteAll();
 }
@@ -82,11 +89,12 @@ package MicroGame_BreakBarrel
 			return Parent::damage(%this, %obj, %source, %pos, %damage, %damageType);
 		}
 
-		if(isObject(%source.client) && %obj.getDamageLevel() + %damage >= %this.maxDamage)
+		if(isObject(%source.client) && %obj.getDamageLevel() + 50 >= %this.maxDamage)
 		{
-			%source.client.setManiaWin(1);
+			if(%microGame.all == 0)
+				%source.client.setManiaWin(1);
 		}
-		Parent::damage(%this, %obj, %source, %pos, %damage, %damageType);
+		Parent::damage(%this, %obj, %source, %pos, 100, %damageType);
 	}
 };
 

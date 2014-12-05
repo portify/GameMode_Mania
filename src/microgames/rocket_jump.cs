@@ -9,8 +9,15 @@ if (!isObject(MicroGame_RocketJump))
 
 function MicroGame_RocketJump::onStart(%this, %obj, %game)
 {
+	%choice = getRandom(0, 1);
+	switch (%choice)
+	{
+		case 0: %image = RocketLauncherImage;
+		case 1: %image = SpearImage;
+	}
+	%type = %choice ? "SPEAR" : "ROCKET";
 	%obj.flip = getRandom() < 0.4;
-	%text = %obj.flip ? "STAY ON THE GROUND" : "ROCKET JUMP";
+	%text = %obj.flip ? "STAY ON THE GROUND" : %type SPC "JUMP";
 
 	%game.displayText("<color:FFFFAA>" @ %text @ "!", 4);
 	%game.miniGame.play2D(ManiaScotsMusic);
@@ -21,7 +28,7 @@ function MicroGame_RocketJump::onStart(%this, %obj, %game)
 
 		if (%client.isAlive())
 		{
-			%client.player.mountImage(RocketLauncherImage, 0);
+			%client.player.mountImage(%image, 0);
 			fixArmReady(%client.player);
 		}
 	}
