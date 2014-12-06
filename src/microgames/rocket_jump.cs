@@ -20,7 +20,7 @@ function MicroGame_RocketJump::onStart(%this, %obj, %game)
 	%text = %obj.flip ? "STAY ON THE GROUND" : %type SPC "JUMP";
 
 	%game.displayText("<color:FFFFAA>" @ %text @ "!", 4);
-	%game.miniGame.play2D(ManiaScotsMusic);
+	%game.miniGame.play2D(%choice ? ManiaPipesMusic : ManiaScotsMusic);
 
 	for (%i = 0; %i < %game.miniGame.numMembers; %i++)
 	{

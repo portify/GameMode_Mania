@@ -169,6 +169,13 @@ datablock AudioProfile(ManiaPipesMusic)
 	preload = 1;
 };
 
+datablock AudioProfile(ManiaWesternMusic)
+{
+	fileName = "Add-Ons/GameMode_Mania/res/western.ogg";
+	description = ManiaMusicDescription;
+	preload = 1;
+};
+
 datablock AudioProfile(ManiaJazzLongMusic)
 {
 	fileName = "Add-Ons/GameMode_Mania/res/jazz_long.ogg";

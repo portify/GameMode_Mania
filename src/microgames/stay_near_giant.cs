@@ -92,5 +92,7 @@ function MicroGame_StayNearGiant::onEnd(%this, %obj, %game)
 	}
 
     if (isObject(%obj.giant))
+    {
         %obj.giant.client.setManiaWin(%near < mFloor(%game.miniGame.numMembers / 3));
+    }
 }

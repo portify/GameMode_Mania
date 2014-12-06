@@ -25,12 +25,13 @@ function MicroGame_BreakBarrel::onStart(%this, %obj, %game)
 		}
 	}
 
-	for (%i = 0; %i < mCeil(%game.miniGame.numMembers / 1.5); %i++)
+	%calc = %obj.all ? %game.miniGame.numMembers : mCeil(%game.miniGame.numMembers / 1.5);
+	for (%i = 0; %i < %calc; %i++)
 	{
 		%barrel = new WheeledVehicle()
 		{
 			dataBlock = barrelOldBreakVehicle;
-			position = vectorAdd(%game.miniGame.pickSpawnPoint(), "0 0 5");
+			position = vectorAdd(%game.miniGame.pickSpawnPoint(), "0 0" SPC getRandom(5, 10));
 		};
 		if (!isObject(BarrelGroup))
 			MissionCleanup.add(new SimGroup(BarrelGroup));

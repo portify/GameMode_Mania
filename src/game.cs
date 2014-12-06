@@ -90,8 +90,7 @@ function ManiaGame::startMicroGame(%this)
 	else
         %boss = %this.microGameCount == $MicrogameMania::MaxMicrogames; 
 
-	%speedUp = mFloor(%this.microGameCount / 2);
-
+	%speedUp = mFloor(%this.microGameCount / 3);
 	if (%this.setSpeedUp(%speedUp))
 	{
 		%this.startMicroGame = %this.schedule(4000, startMicroGame);
@@ -136,6 +135,9 @@ function ManiaGame::startMicroGame(%this)
 		%this.miniGame.schedule(2000, respawnDeadPlayers);
 		%this.microGame.schedule(2000, call, "onStart");
 	}
+	%leader = %this.getLeader();
+	%text = "<color:FFFFAA>Microgame<color:AAAAFF>" SPC %this.microGameCount @ "<color:FFFFAA><br><color:FFFFAA>Lead:" SPC %leader.getPlayerName() SPC "<color:AAAAFF>(" @ %leader.score SPC "points)";
+	%this.miniGame.bottomPrintAll("<just:center>" @ %text @ "\n", 0, 1);
 }
 
 function ManiaGame::endMicroGame(%this)
@@ -196,9 +198,8 @@ function ManiaGame::displayText(%this, %text, %time)
 
 function ManiaGame::setSpeedUp(%this, %speedUp)
 {
-	%speedUp = mClamp(%speedUp, 0, 4);
-	%timeScale = 1 + %speedUp * 0.075;
-
+	%speedUp = mClamp(%speedUp, 0, 5);
+	%timeScale = 1 + %speedUp * 0.1;
 	setTimeScale(%timeScale);
 	commandToAll('TimeScale', %timeScale);
 
@@ -321,6 +322,9 @@ package ManiaGamePackage
 		if (%this.numMembers && (%existed || %this.owner == 0)) {
 			%this.maniaGame = ManiaGame(%this);
 		}
+
+		if(isObject(barrelGroup)) barrelGroup.deleteAll();
+		if(isObject(targetGroup)) targetGroup.deleteAll();
 	}
 
 	function MiniGameSO::checkLastManStanding(%this)
