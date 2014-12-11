@@ -24,6 +24,6 @@ exec("./src/microgames/break_barrel.cs");
 exec("./src/microgames/hit_targets.cs");
 
 exec("./src/microgames/boss_obby.cs");
-
+// exec("./src/microgames/boss_octagon_madness.cs"); //wip
 $Game::PlayerInvulnerabilityTime = 0;
 $MicrogameMania::MaxMicrogames = 20;

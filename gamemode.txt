@@ -81,8 +81,8 @@ ADDON GameMode_Mania
 
 // Environment
 $EnvGuiServer::SimpleMode 1
-$EnvGuiServer::SkyFile Add-Ons/Sky_Skylands/Skylands.dml
-$EnvGuiServer::WaterFile None
+$EnvGuiServer::SkyFile Add-Ons/Sky_TF2/Trainyard.dml
+$EnvGuiServer::WaterFile NONE
 $EnvGuiServer::GroundFile Add-Ons/Ground_Plate/plate.ground
 
 // Mini-Game
