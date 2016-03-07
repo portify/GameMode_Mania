@@ -40,7 +40,7 @@ function MicroGame_ObbyBoss::onStart(%this, %obj, %game)
 function MicroGame_ObbyBoss::onEnd(%this, %obj, %game)
 {
 	%game.setArena("main");
-	%game.miniGame.setMusic();
+	%game.miniGame.setMusic("");
 	// for (%i = 0; %i < %game.miniGame.numMembers; %i++)
 	// {
 	// 	%client = %game.miniGame.member[%i];

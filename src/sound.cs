@@ -3,11 +3,6 @@ datablock AudioDescription(ManiaMusicDescription : AudioDefault3D)
 	volume = 0.5;
 };
 
-datablock AudioDescription(ManiaLoopingMusicDescription : AudioLooping2d)
-{
-	volume = 2;
-};
-
 datablock AudioProfile(ManiaCompleteMe)
 {
 	fileName = "Add-Ons/GameMode_Mania/res/complete_me.wav";
@@ -24,7 +19,7 @@ datablock AudioProfile(ManiaCompleteYou)
 
 datablock AudioProfile(ManiaIntroMusic)
 {
-	fileName = "Add-Ons/GameMode_Mania/res/mania_intro.ogg";
+	fileName = "Add-Ons/GameMode_Mania/res/mania_welcome.ogg";
 	description = ManiaMusicDescription;
 	preload = 1;
 };
@@ -192,13 +187,13 @@ datablock AudioProfile(ManiaMetalLongMusic)
 datablock AudioProfile(ManiaBossWestMusic)
 {
 	fileName = "Add-Ons/GameMode_Mania/res/mania_boss_west.ogg";
-	description = ManiaLoopingMusicDescription;
+	description = ManiaMusicDescription;
 	preload = 1;
 };
 
 datablock AudioProfile(ManiaBossChipMusic)
 {
 	fileName = "Add-Ons/GameMode_Mania/res/mania_boss_chip.ogg";
-	description = ManiaLoopingMusicDescription;
+	description = ManiaMusicDescription;
 	preload = 1;
 };

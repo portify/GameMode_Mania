@@ -8,7 +8,7 @@ if (!isObject(MicroGame_BreakBarrel))
 
 function MicroGame_BreakBarrel::onStart(%this, %obj, %game)
 {
-	%obj.all = getRandom(0, 1);
+	%obj.all = 0;//getRandom(0, 1);
 	%text = "<color:FFFFAA>BREAK" SPC (%obj.all ? "ALL THE BARRELS!" : "A BARREL!");
 	%game.displayText(%text, 4);
 	%game.miniGame.play2D(ManiaPanicMusic);

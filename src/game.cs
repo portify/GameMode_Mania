@@ -46,7 +46,7 @@ function ManiaGame::end(%this)
 	}
 
 	%this.displayText(%text, 5);
-
+	%this.miniGame.bottomPrintAll("<just:center><font:palatino linotype:28>\c6Credits:\n\c3Port\c6 and \c3Jack Noir\c6 - Code Masters\n\c3Plastiware\c6 - Composer Extraordinare\n", 4, 1);
 	%this.miniGame.play2D(ManiaGameEndMusic);
 	%this.miniGame.scheduleReset();
 
@@ -201,7 +201,7 @@ function ManiaGame::setSpeedUp(%this, %speedUp)
 	%speedUp = mClamp(%speedUp, 0, 5);
 	%timeScale = 1 + %speedUp * 0.1;
 	setTimeScale(%timeScale);
-	commandToAll('TimeScale', %timeScale);
+	// commandToAll('TimeScale', %timeScale);
 
 	%last = %this.lastSpeedUp;
 	%this.lastSpeedUp = %speedUp;
